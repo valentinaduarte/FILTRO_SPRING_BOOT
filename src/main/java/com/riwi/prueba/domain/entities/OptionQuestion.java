@@ -30,7 +30,7 @@ public class OptionQuestion {
 
     private Boolean active;
 
-    /*Relacion con question */
+    /*Relacion con  tabla question */
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "question_id",referencedColumnName = "id")
     private Question question;

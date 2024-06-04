@@ -1,5 +1,6 @@
 package com.riwi.prueba.api.dto.response;
 
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -21,8 +22,6 @@ public class UserResp {
 
     private boolean active;
 
-
     /*Relaciones con otras tablas */
-     /* Relación con tabla "Course" 
-    private List<SurveyResp> survey;*/
+    private List<SurveyResp> survey;
 }

@@ -1,5 +1,7 @@
 package com.riwi.prueba.api.dto.response;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class QuestionBasicResp {
+public class QuestionResp {
 
     private int question_id;
 
@@ -18,4 +20,10 @@ public class QuestionBasicResp {
     private String type;
 
     private Boolean active;
+
+    private int survey_id;
+
+    /*lista de opciones para respuesta */
+    private List<OptionQuestionResp> optionQuestions;
+
 }

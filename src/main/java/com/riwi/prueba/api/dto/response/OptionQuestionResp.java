@@ -9,13 +9,14 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class QuestionBasicResp {
+public class OptionQuestionResp {
 
-    private int question_id;
+    private int option_id;
 
     private String text;
 
-    private String type;
-
     private Boolean active;
+
+    private int question_id;
+
 }
