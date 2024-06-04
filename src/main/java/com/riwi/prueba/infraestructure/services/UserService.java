@@ -34,13 +34,9 @@ public class UserService implements IUserService{
 
     /* Inyección de dependencias */
     @Autowired
-    private final UserRepository repository;
-
-    /* dependencias */
-    @Autowired
     private final UserRepository userRepository;
 
-    /* metodos CRUD */
+    
     @Override
     public UserResp create(UserReq request) {
         User user = this.UserReqToEntity(request); // creacion de la entidad usuario desdel el request
@@ -62,46 +58,37 @@ public class UserService implements IUserService{
         PageRequest pagination = null;
         switch (sortType) {
             case NONE -> pagination = PageRequest.of(page, size);
-            case ASC -> pagination = PageRequest.of(page, size, Sort.by(FIELD_BY_SORT).ascending()); // organizar de
-                                                                                                     // forma ascendente
-                                                                                                     // por titulo de
-                                                                                                     // lesson
-            case DESC -> pagination = PageRequest.of(page, size, Sort.by(FIELD_BY_SORT).descending()); // organizar de
-                                                                                                       // forma
-                                                                                                       // descendente
-                                                                                                       // por titulo de
-                                                                                                       // lesson
+            case ASC -> pagination = PageRequest.of(page, size, Sort.by(FIELD_BY_SORT).ascending());
+                                                                                                     
+            case DESC -> pagination = PageRequest.of(page, size, Sort.by(FIELD_BY_SORT).descending()); 
+                                                                                                       
         }
 
-        return this.userRepository.findAll(pagination).map(this::userEntityToResponse); // se nesesita devolver un
-                                                                                        // response de la entidad
-
+        return this.userRepository.findAll(pagination).map(this::userEntityToResponse); 
     }
 
     @Override
     public UserResp getById(Integer id) {
-        return this.userEntityToResponse(this.findUser(id)); // se busca el usuario por id y se construye la endidad del
-                                                             // response
+        return this.userEntityToResponse(this.findUser(id)); 
     }
 
     @Override
     public UserResp update(UserReq request, Integer id) {
-        User user = this.findUser(id); // se busca el usuario por id para actualizar
+        User user = this.findUser(id); 
 
-        User userUpdate = this.UserReqToEntity(request); // se crea la entidad usuario desde el request
+        User userUpdate = this.UserReqToEntity(request); 
 
-       // userUpdate.setSurveys(user.getSurveys()); // se guarda las encuestas
+       // userUpdate.setSurveys(user.getSurveys()); 
 
-        return this.userEntityToResponse(this.userRepository.save(userUpdate)); // se guarda el usuario actualizado
+        return this.userEntityToResponse(this.userRepository.save(userUpdate)); 
     }
 
     @Override
     public void delete(Integer id) {
-        this.userRepository.delete(this.findUser(id)); // se busca el usuario con el id ingresado y se elmina del
-                                                       // repositorio
+        this.userRepository.delete(this.findUser(id)); 
     }
 
-    /* Metodos propios */
+
 
     /* Entidad a response */
     private UserResp userEntityToResponse(User entity) {
@@ -143,7 +130,7 @@ public class UserService implements IUserService{
     }
 
     /* buscadores */
-    private User findUser(Integer id) { // funcion para buscar usuario
+    private User findUser(Integer id) { 
         return this.userRepository.findById(id)
                 .orElseThrow(() -> new BadRequestException(ErrorMessage.idNotFound("User")));
     }
