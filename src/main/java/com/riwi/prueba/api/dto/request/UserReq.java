@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class UserReq {
     @NotBlank(message = "The user's UserName is required.")
-    private String username;
+    private String name;
 
     @NotBlank(message = "The user's password is required.")
     private String password;
@@ -29,6 +29,6 @@ public class UserReq {
     private String email;
 
  
-    /*@NotNull(message = "The user role is required.")
-    private Role role;**/
+    @NotNull(message = "The user role is required.")
+    private boolean active;
 }

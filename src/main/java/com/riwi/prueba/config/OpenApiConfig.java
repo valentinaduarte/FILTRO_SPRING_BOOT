@@ -1,4 +1,4 @@
-package com.riwi.prueba.api.config;
+package com.riwi.prueba.config;
 
 
 import org.springframework.context.annotation.Configuration;
