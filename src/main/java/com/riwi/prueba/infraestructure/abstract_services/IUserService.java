@@ -3,5 +3,5 @@ import com.riwi.prueba.api.dto.request.*;
 import com.riwi.prueba.api.dto.response.*;
 
 public interface IUserService extends CrudService<UserReq, UserResp, Integer>{
-    public final String FIELD_BY_SORT = "full_name";
+    public final String FIELD_BY_SORT = "name"; /*Variable paginacion */
 }
