@@ -14,21 +14,21 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserReq {
-    @NotBlank(message = "The user's UserName is required.")
+    @NotBlank(message = "Name is required.")
     private String name;
 
-    @NotBlank(message = "The user's password is required.")
+    @NotBlank(message = "Password is required.")
     private String password;
 
-    @Email(message = "The email is not valid.")
+    @Email(message = "Email is not valid.")
     @Size(
         min = 5, 
         max = 100,
-        message = "The email must be between 5 and 100 characters."
+        message = "Email must be between 5 and 100 characters."
     )
     private String email;
 
  
-    @NotNull(message = "The user role is required.")
+    @NotNull(message = "Role is required.")
     private boolean active;
 }

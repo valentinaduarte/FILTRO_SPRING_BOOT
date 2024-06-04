@@ -40,12 +40,12 @@ public class Survey {
 
     private Boolean active;
 
-    /* Relacion con user */
+    /* Relacion con tabla user */
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
-    /* Relacion con question */
+    /* Relacion con tabla question */
     @OneToMany(mappedBy = "text", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = false)
     @ToString.Exclude
     @EqualsAndHashCode.Exclude

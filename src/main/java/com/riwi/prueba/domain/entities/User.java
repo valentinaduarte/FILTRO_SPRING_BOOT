@@ -39,7 +39,7 @@ public class User {
 
     private Boolean active;
 
-    /* Relacion con survey */
+    /* Relacion con tabla survey */
     @OneToMany(mappedBy = "user",fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = false)
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
