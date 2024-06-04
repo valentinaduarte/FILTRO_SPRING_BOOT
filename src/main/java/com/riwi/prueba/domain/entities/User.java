@@ -10,37 +10,36 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 
-@Entity(name = "user")
+@Entity(name = "users")
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {  
-    /*Atributos de la clase User */
+public class User {
+    
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
 
     @Column(length = 100, nullable = false)
     private String name;
 
     @Column(length = 100, nullable = false)
-    private String password;
-
-    @Column(length = 255, nullable = false)
     private String email;
 
-    @Column(nullable = false)
-    private boolean active;
+    @Column(length = 255, nullable = false)
+    private String password;
 
-     /* Relacion con tabla survey */
+    private Boolean active;
+
+    /* Relacion con survey */
     @OneToMany(mappedBy = "user",fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = false)
     @ToString.Exclude
     @EqualsAndHashCode.Exclude

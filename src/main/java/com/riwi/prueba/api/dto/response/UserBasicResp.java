@@ -18,4 +18,6 @@ public class UserBasicResp {
 
     private String email;
 
+    private boolean active;
+
 }
