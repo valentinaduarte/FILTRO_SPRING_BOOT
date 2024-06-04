@@ -23,5 +23,5 @@ public class UserResp {
     private boolean active;
 
     /*Relaciones con otras tablas */
-    private List<SurveyResp> survey;
+    private List<SurveyBasicResp> Surveys;
 }

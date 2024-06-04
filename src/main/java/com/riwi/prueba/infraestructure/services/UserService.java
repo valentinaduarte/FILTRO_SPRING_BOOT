@@ -64,15 +64,13 @@ public class UserService implements IUserService {
                                                                                                        // lesson
         }
 
-        return this.userRepository.findAll(pagination).map(this::userEntityToResponse); // se nesesita devolver un
-                                                                                        // response de la entidad
+        return this.userRepository.findAll(pagination).map(this::userEntityToResponse); 
 
     }
 
     @Override
     public UserResp getById(Integer id) {
-        return this.userEntityToResponse(this.findUser(id)); // se busca el usuario por id y se construye la endidad del
-                                                             // response
+        return this.userEntityToResponse(this.findUser(id)); 
     }
 
     @Override
@@ -96,10 +94,10 @@ public class UserService implements IUserService {
     /* Entidad a response */
     private UserResp userEntityToResponse(User entity) {
    
-        List<SurveyBasicResp> surveys = entity.getSurveys() // se obtiene lista de inscripciones
+        List<SurveyBasicResp> surveys = entity.getSurveys() 
                 .stream() 
-                .map(this::surveyEntityToResponse) // mapeo de lista de entidades a response
-                .collect(Collectors.toList()); // coleccion a lista
+                .map(this::surveyEntityToResponse) 
+                .collect(Collectors.toList()); 
 
         return UserResp.builder()
 
@@ -107,7 +105,7 @@ public class UserService implements IUserService {
                 .name(entity.getName())
                 .email(entity.getEmail())
                 .password(entity.getPassword())
-                .survey(surveys)
+                .Surveys(surveys)
                 .active(entity.getActive())
                 .build();
     }
