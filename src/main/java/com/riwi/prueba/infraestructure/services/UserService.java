@@ -7,8 +7,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
-
-import org.hibernate.mapping.List;
+import java.util.*;
 import org.springdoc.api.ErrorMessage;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +21,9 @@ import com.riwi.prueba.domain.repositories.UserRepository;
 import com.riwi.prueba.infraestructure.abstract_services.*;
 import com.riwi.prueba.util.enums.SortType;
 import com.riwi.prueba.util.exceptions.BadRequestException;
-
+import com.riwi.prueba.api.dto.request.SurveyReq;
+import com.riwi.prueba.api.dto.response.SurveyBasicResp;
+import com.riwi.prueba.api.dto.response.SurveyResp;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -113,8 +114,8 @@ public class UserService implements IUserService{
 
         return UserResp.builder()
                 // construccion de objeto usuario
-                .user_id(entity.getId())
-                .user_name(entity.getName())
+                .id(entity.getId())
+                .name(entity.getName())
                 .email(entity.getEmail())
                 .password(entity.getPassword())
                 .Surveys(surveys)
